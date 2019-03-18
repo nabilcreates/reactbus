@@ -29,7 +29,7 @@ class App extends React.Component{
         })
     }
 
-    // Everytime the textbox changes, we setthe state back
+    // Everytime the textbox changes, we set the state back
     // the function passes an event for the argument
     handleChange(event){
 
@@ -57,12 +57,19 @@ class App extends React.Component{
     
     render(){
 
+        // Console log the stopCode everytime the component render
         console.log(this.state.stopCode)
 
+        // Will do map rendering later in the return
         let returnBusInfo;
 
+        // If data is loaded
         if(this.state.loaded){
+
+            // Map the value
             returnBusInfo = this.state.api.map((bus) => {
+
+                // Return a bus component with props businfo which we are supposed to pass in individual bus which map alerady helped us greatly with
                 return <Bus businfo={bus} />
             })
         }
