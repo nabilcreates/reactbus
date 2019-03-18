@@ -44,3 +44,7 @@ button{
     border: 0;
     padding: 10px 15px;
 }
+
+li{
+    font-weight: 100;
+}
