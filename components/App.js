@@ -7,7 +7,7 @@ class App extends React.Component{
         this.state = {
             api: null,
             loaded: false,
-            stopCode: 27459,
+            stopCode: 27301,
         }
 
         this.handleChange = this.handleChange.bind(this)
