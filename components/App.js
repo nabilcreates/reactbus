@@ -55,19 +55,28 @@ class App extends React.Component{
     handleButtonClick(){
         console.log('clicked/enter-ed')
         this.getTime(this.state.stopCode)
+        this.blurInput()
     }
 
     handleKeyDown(e){
         if (e.key === 'Enter') {
             this.handleButtonClick()
+            this.blurInput()
         }
+
+
+    }
+
+    blurInput(){
+        // to hide the keyboard
+        document.getElementById('stopcodeinput').blur()
     }
 
     render(){
         return(
             <div>
                     <div id='form'>
-                    <input type='text' value={this.state.stopCode} onChange=    {this.handleInputChange} onKeyDown={this.handleKeyDown} />
+                    <input id='stopcodeinput' type='text' value={this.state.stopCode} onChange=    {this.handleInputChange} onKeyDown={this.handleKeyDown} />
 
                     <button onClick={this.handleButtonClick} >Update</button>
                     </div>
