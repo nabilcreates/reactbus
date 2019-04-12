@@ -61,10 +61,9 @@ class App extends React.Component{
     handleKeyDown(e){
         if (e.key === 'Enter') {
             this.handleButtonClick()
-            this.blurInput()
         }
 
-
+        this.blurInput()
     }
 
     blurInput(){
