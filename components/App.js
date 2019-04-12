@@ -7,7 +7,6 @@ class App extends React.Component{
             loaded: false,
             data: null,
             stopCode: null,
-            key: null,
         }
 
         // Binding for setState
@@ -24,6 +23,11 @@ class App extends React.Component{
     }
 
     getTime(sc){
+
+        this.setState({
+            loaded: false,
+        })
+        
         fetch(`https://arrivelah.herokuapp.com/?id=${Number(sc)}`)
         .then(res => res.json())
         .then(data => {
@@ -56,29 +60,27 @@ class App extends React.Component{
     handleKeyDown(e){
         if (e.key === 'Enter') {
             this.handleButtonClick()
-            this.setState({
-                key: e.key
-            })
         }
     }
 
     render(){
         return(
             <div>
-                <h1>testing-release</h1>
                     <div id='form'>
                     <input type='text' value={this.state.stopCode} onChange=    {this.handleInputChange} onKeyDown={this.handleKeyDown} />
 
                     <button onClick={this.handleButtonClick} >Update</button>
                     </div>
                 
-                <h1>{this.state.key}</h1>
-                
                 {this.state.loaded ? this.state.data.map(bus => {
                     return(
                         <Bus key={bus.no} bus_info={bus} />
                     )
-                }) : null}
+                }) : (
+                    <div id='container'>
+                        <h1>Loading...</h1>
+                    </div>
+                )}
             </div>
         )
     }
