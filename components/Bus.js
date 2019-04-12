@@ -11,6 +11,8 @@ class Bus extends React.Component{
             return 'Single'
         } else if(bus_type == 'SD'){
             return 'Double'
+        }else if(bus_type == 'BD'){
+            return 'Bendy'
         }else{
             return 'Unknown'
         }

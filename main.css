@@ -65,11 +65,14 @@ button {
 }
 
 #sda {
+    color: #f39c12;
+}
+#lsd{
     color: #e74c3c;
 }
 
 #noload {
-    color: #f1c40f;
+    color: #8e44ad;
 }
 
 #bus:nth-of-type(2n) {

@@ -7,7 +7,7 @@ class App extends React.Component{
             loaded: false,
             data: null,
             stopCode: 'Enter A Code',
-            version_number: '2.1.5',
+            version_number: '2.1.6',
         }
 
         // Binding for setState
@@ -84,7 +84,7 @@ class App extends React.Component{
 
                     
                 
-                {this.state.loaded ? this.state.data.map(bus => {
+                {this.state.loaded && this.state.data ? this.state.data.map(bus => {
                     return(
                         <Bus key={bus.no} bus_info={bus} />
                     )
