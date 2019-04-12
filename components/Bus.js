@@ -21,9 +21,9 @@ class Bus extends React.Component{
 
         if (Math.round(timing_ms / 60000) >= 1){
             return `${Math.round(timing_ms / 60000)} Minutes (${this.returnBusType(bus.next.type)})`
-        }else if (Math.round(timing_ms / 60000 < 1)){
+        }else if (Math.round(timing_ms / 60000 < 1 && timing_ms !== null)){
             return `Arriving (${this.returnBusType(bus.next.type)})`
-        }else if(timing_ms == ''){
+        }else{
             return 'Unknown'
         }
     }
