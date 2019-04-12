@@ -6,7 +6,7 @@ class App extends React.Component{
         this.state = {
             loaded: false,
             data: null,
-            stopCode: null,
+            stopCode: 'Enter A Code',
             version_number: '2.1.4',
         }
 
