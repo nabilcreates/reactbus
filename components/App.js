@@ -3,89 +3,71 @@ class App extends React.Component{
     constructor(){
         super();
 
-        // Initial state
         this.state = {
-            api: null,
             loaded: false,
-            stopCode: 27301,
+            data: null,
+            stopCode: null,
         }
 
-        this.handleChange = this.handleChange.bind(this)
-        this.updateBusTiming = this.updateBusTiming.bind(this)
+        // Binding for setState
+        this.handleInputChange = this.handleInputChange.bind(this)
+        this.handleButtonClick = this.handleButtonClick.bind(this)
     }
 
-    // This function will run after the component mounts
     componentDidMount(){
 
-        this.setState({loaded: false})
-        
-        fetch('https://arrivelah.herokuapp.com/?id=' + this.state.stopCode)
-        .then(response => response.json())
-        .then(json => {
-            this.setState({
-                api: json.services,
-                loaded: true,
+        console.log('COMPONENT MOUNTED')
+
+        this.getTime(localStorage.getItem('stopCode'))
+    }
+
+    getTime(sc){
+        fetch(`https://arrivelah.herokuapp.com/?id=${Number(sc)}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data.services)
+            this.setState(prevState => {
+                return{
+                    loaded: true,
+                    data: data.services,
+                    stopCode: sc
+                }
             })
+
+            localStorage.setItem('stopCode', sc)
         })
     }
 
-    // Everytime the textbox changes, we set the state back
-    // the function passes an event for the argument
-    handleChange(event){
+    handleInputChange(e){
 
-        // event refers to the argument passed
-        // target refers to the target element (in this case input)
-        // value refers to the value that was newly typed
+        // set state with the value inside input
         this.setState({
-            stopCode: event.target.value
+            stopCode: e.target.value
         })
     }
 
-    updateBusTiming(){
-
-        this.setState({loaded: false})
-        
-        fetch('https://arrivelah.herokuapp.com/?id=' + this.state.stopCode)
-        .then(response => response.json())
-        .then(json => {
-            this.setState({
-                api: json.services,
-                loaded: true,
-            })
-        })
+    handleButtonClick(){
+        console.log('clicked')
+        this.getTime(this.state.stopCode)
     }
-    
+
     render(){
-
-        // Console log the stopCode everytime the component render
-        console.log(this.state.stopCode)
-
-        // Will do map rendering later in the return
-        let returnBusInfo;
-
-        // If data is loaded
-        if(this.state.loaded){
-
-            // Map the value
-            returnBusInfo = this.state.api.map((bus) => {
-
-                // Return a bus component with props businfo which we are supposed to pass in individual bus which map alerady helped us greatly with
-                return <Bus businfo={bus} />
-            })
-        }
-        
-        return (
+        return(
             <div>
 
-                {/* We need the onChange because that is how we set the value */}
-                <input type='text' value={this.state.stopCode} onChange={this.handleChange}></input>
-        
-                <button onClick={this.updateBusTiming}>Update</button>
+                    <div id='form'>
+                    <input type='text' value={this.state.stopCode} onChange=    {this.handleInputChange} />
 
-                {/* Renders this only when it is loaded, or else just return a h1 that says loading */}
-                {this.state.loaded ? returnBusInfo : <h1>Loading...</h1>}
-
+                    <button onClick={this.handleButtonClick} >Update</button>
+                    </div>
+                
+                {this.state.loaded ? this.state.data.map(bus => {
+                    return(
+                        <Bus key={bus.no} bus_info={bus} />
+                    )
+                }) : null}
             </div>
         )
     }
+
 }
