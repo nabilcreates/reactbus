@@ -2,6 +2,8 @@ class Bus extends React.Component{
 
     constructor(){
         super()
+
+        this.returnBusTiming = this.returnBusTiming.bind(this)
     }
 
     returnBusType(bus_type){
@@ -11,6 +13,18 @@ class Bus extends React.Component{
             return 'Double'
         }else{
             return 'Unkown'
+        }
+    }
+
+    returnBusTiming(timing_ms){
+        let bus = this.props.bus_info
+
+        if (Math.round(timing_ms / 60000) >= 1){
+            return `${Math.round(timing_ms / 60000)} Minutes (${this.returnBusType(bus.next.type)})`
+        }else if (Math.round(timing_ms / 60000 < 1)){
+            return `Arriving (${this.returnBusType(bus.next.type)})`
+        }else if(timing_ms == ''){
+            return 'Unknown'
         }
     }
 
@@ -24,11 +38,11 @@ class Bus extends React.Component{
                     <h1>{bus.no}</h1>
 
                     {/* NEXT */}
-                    <p  id={bus.next.load ? bus.next.load.toLowerCase() : 'noload'}  >{Math.round(bus.next.duration_ms / 60000) >= 1 ? `${Math.round(bus.next.duration_ms / 60000)} Minutes [${this.returnBusType(bus.next.type)}]` : `Arriving [${this.returnBusType(bus.next.type)}]`}</p>
+                    <p  id={bus.next.load ? bus.next.load.toLowerCase() : 'noload'}>{this.returnBusTiming(bus.next.duration_ms)}</p>
 
-                    <p  id={bus.next2.load ? bus.next2.load.toLowerCase() : 'noload'}  >{Math.round(bus.next2.duration_ms / 60000) >= 1 ? `${Math.round(bus.next2.duration_ms / 60000)} Minutes [${this.returnBusType(bus.next2.type)}]` : `Arriving [${this.returnBusType(bus.next2.type)}]`}</p>
+                    <p  id={bus.next2.load ? bus.next2.load.toLowerCase() : 'noload'}>{this.returnBusTiming(bus.next2.duration_ms)}</p>
 
-                    <p  id={bus.next3.load ? bus.next3.load.toLowerCase() : 'noload'}  >{Math.round(bus.next3.duration_ms / 60000) >= 1 ? `${Math.round(bus.next3.duration_ms / 60000)} Minutes [${this.returnBusType(bus.next3.type)}]` : `Arriving [${this.returnBusType(bus.next3.type)}]`}</p>
+                    <p  id={bus.next3.load ? bus.next3.load.toLowerCase() : 'noload'}>{this.returnBusTiming(bus.next3.duration_ms)}</p>
 
 
                     </div>

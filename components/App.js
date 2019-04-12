@@ -7,7 +7,7 @@ class App extends React.Component{
             loaded: false,
             data: null,
             stopCode: null,
-            version_number: '2.1.1',
+            version_number: '2.1.2',
         }
 
         // Binding for setState
@@ -74,9 +74,7 @@ class App extends React.Component{
         return(
             <div>
 
-                    <div id='container'>
-                        <h6>v{this.state.version_number}</h6>
-                    </div>
+                    <h6 id='version'>v{this.state.version_number}</h6>
                 
                     <div id='form'>
                     <input id='stopcodeinput' type='text' value={this.state.stopCode} onChange=    {this.handleInputChange} onKeyDown={this.handleKeyDown} />

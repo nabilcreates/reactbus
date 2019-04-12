@@ -45,9 +45,12 @@ input,button{
     width: 100%;
 }
 
-h6{
+#version{
     text-align: center;
     font-weight: 300;
+    background: #c0392b;
+    margin: 0;
+    padding: 10px;
 }
 
 /* #form{
