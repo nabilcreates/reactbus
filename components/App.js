@@ -7,7 +7,7 @@ class App extends React.Component{
             loaded: false,
             data: null,
             stopCode: 'Enter A Code',
-            version_number: '2.1.4',
+            version_number: '2.1.5',
         }
 
         // Binding for setState

@@ -24,7 +24,7 @@ input {
     border-radius: 0;
     text-align: center;
     border: 0;
-    background: #333;
+    background: #222;
     color: whitesmoke;
     padding: 15px 0;
     font-size: 16px;
@@ -33,7 +33,7 @@ input {
 button {
     border: 0;
     color: whitesmoke;
-    background: #222;
+    background: rgba(0,0,0,0.32);
     padding: 15px 0;
 }
 
@@ -42,9 +42,9 @@ button {
     margin: auto;
 }
 
-input,button{
+/* input,button{
     width: 100%;
-}
+} */
 
 #version{
     text-align: center;
@@ -54,10 +54,10 @@ input,button{
     padding: 10px;
 }
 
-/* #form{
+#form{
     display: grid;
     grid-template-columns: auto 24%;
-} */
+}
 
 /* THIS SECTION IS THE ID GIVEN TO THE H1 IN BUS.JS, IT USES THE LOAD DATA AND GAVE IT THE ID */
 #sea {
