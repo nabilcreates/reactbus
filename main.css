@@ -21,6 +21,7 @@ p {
 }
 
 input {
+    border-radius: 0;
     text-align: center;
     border: 0;
     background: #333;
