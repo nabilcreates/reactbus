@@ -21,4 +21,14 @@ The arrival timing text will have 4 color coded text containing the arrival timi
 
 ### I am trying my best to catch all the little bugs and major bugs, but sometimes, I can miss that specific bug, If you see a bug, please open an issue at the `issues` tab. Please include steps to reproduce it and the bus stop code you are trying to get the timings of.
 
+# Bus Type Guide
+The arrival timing text will be in the format of: `<timing> <type>`, as of version `2.1.6-rc1`, The text of the type will be straight from the API. There are a total of 3 types of bus types.
+
+-   `SD`
+    -   Single-Deck Bus
+-   `DD`
+    -   Double-Deck Bus
+-   `BD`
+    -   Bendy Bus
+
 #### Mobile Friendly Confirmed :)
