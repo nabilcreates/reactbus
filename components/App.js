@@ -12,6 +12,7 @@ class App extends React.Component{
         // Binding for setState
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleButtonClick = this.handleButtonClick.bind(this)
+        this.handleKeyDown = this.handleKeyDown.bind(this)
     }
 
     componentDidMount(){
@@ -47,8 +48,14 @@ class App extends React.Component{
     }
 
     handleButtonClick(){
-        console.log('clicked')
+        console.log('clicked/enter-ed')
         this.getTime(this.state.stopCode)
+    }
+
+    handleKeyDown(e){
+        if (e.key === 'Enter') {
+            this.handleButtonClick()
+        }
     }
 
     render(){
@@ -56,7 +63,7 @@ class App extends React.Component{
             <div>
 
                     <div id='form'>
-                    <input type='text' value={this.state.stopCode} onChange=    {this.handleInputChange} />
+                    <input type='text' value={this.state.stopCode} onChange=    {this.handleInputChange} onKeyDown={this.handleKeyDown} />
 
                     <button onClick={this.handleButtonClick} >Update</button>
                     </div>
