@@ -59,6 +59,10 @@ button {
     grid-template-columns: auto 24%;
 }
 
+a{
+    color: whitesmoke;
+}
+
 /* THIS SECTION IS THE ID GIVEN TO THE H1 IN BUS.JS, IT USES THE LOAD DATA AND GAVE IT THE ID */
 #sea {
     color: #2ecc71;

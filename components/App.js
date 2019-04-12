@@ -74,7 +74,11 @@ class App extends React.Component{
         return(
             <div>
 
-                    <h6 id='version'>v{this.state.version_number}</h6>
+                    <h6 id='version'>
+                        <a href='https://github.com/renabil/reactbus'>
+                            v{this.state.version_number}
+                        </a>
+                    </h6>
                 
                     <div id='form'>
                     <input id='stopcodeinput' type='text' value={this.state.stopCode} onChange=    {this.handleInputChange} onKeyDown={this.handleKeyDown} />
